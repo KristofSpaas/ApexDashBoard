@@ -18,15 +18,14 @@
                 });
         };
 
-        vm.setTeVerwijderenDoctor = function (doctor, index) {
+        vm.setTeVerwijderenDoctor = function (doctor) {
             vm.teVerwijderenDoctor = doctor;
-            vm.index = index;
         };
 
         vm.deleteDoctor = function () {
             apexFactory.deleteDoctor(vm.teVerwijderenDoctor.DoctorId)
                 .success(function () {
-                    vm.Doctors.splice(vm.index, 1);
+                    vm.Doctors.splice(vm.Doctors.indexOf(vm.teVerwijderenDoctor), 1);
                 })
                 .error(function () {
 
