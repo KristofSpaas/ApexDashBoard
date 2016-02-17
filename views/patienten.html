@@ -1,0 +1,76 @@
+<div id="myNavbar" ng-include="'layout/navbar.html'"></div>
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Patiënten
+                <button ng-click="vm.goToAddPatientView()" type="button"
+                        class="btn btn-lg btn-success pull-right">
+                    <i class="fa fa-plus"></i>
+                </button>
+            </h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="pPanel" ng-repeat="patient in vm.Patienten | orderBy: 'User.UserName'">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-4 pName">
+                        <a style="color: white; font-size: x-large" ng-href="#/patientDetail/{{ patient.PatientId }}">
+                            {{ patient.User.UserName }}
+                        </a>
+                    </div>
+                    <div class="col-xs-8 text-right">
+                        <div class="btn-group">
+                            <a class="btn btn-lg btn-default "
+                               ng-href="#/patientDetail/{{ patient.PatientId }}">
+                                <i class="fa fa-search-plus"></i>
+                            </a>
+                            <a class="btn btn-lg btn-success"
+                               ng-href="#/berichten/{{ patient.PatientId }}">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                            <a class="btn btn-lg btn-warning"
+                               ng-href="#/adviezen/{{ patient.PatientId }}">
+                                <i class="fa fa-thumbs-up"></i>
+                            </a>
+                            <button type="button" class="btn btn-lg btn-danger"
+                                    ng-click="vm.setTeVerwijderenPatient(patient, $index)"
+                                    data-toggle="modal" data-target="#myModal">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header myColor">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Patient verwijderen</h4>
+            </div>
+            <div class="modal-body">
+                <p>Bent u zeker dat u patiënt {{ vm.teVerwijderenPatient.User.UserName }} wilt
+                    verwijderen?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Annuleer</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"
+                        ng-click="vm.deletePatient()">Verwijder
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>

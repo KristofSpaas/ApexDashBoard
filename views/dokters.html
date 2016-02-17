@@ -1,0 +1,67 @@
+<div id="myNavbar" ng-include="'layout/navbar.html'"></div>
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Dokters
+                <button ng-click="vm.goToAddDoctorView()" type="button" class="btn btn-lg btn-success pull-right">
+                    <i class="fa fa-plus"></i>
+                </button>
+            </h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="pPanel" ng-repeat="doctor in vm.Doctors | orderBy: 'LastName'">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-7 pName">
+                        <a style="color: white; font-size: x-large" ng-href="#/doctorDetail/{{ doctor.DoctorId }}">
+                            {{ doctor.LastName }} {{ doctor.FirstName }}
+                        </a>
+                    </div>
+                    <div class="col-xs-5 text-right">
+                        <div class="btn-group">
+                            <a type="button" class="btn btn-success btn-lg"
+                            ng-href="#/editDoctor/{{ doctor.DoctorId }}">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            <button type="button" class="btn btn-danger btn-lg"
+                                data-toggle="modal" data-target="#myModal"
+                                ng-click="vm.setTeVerwijderenDoctor(doctor, $index)">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header myColor">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Doktor verwijderen</h4>
+            </div>
+            <div class="modal-body">
+                <p>Bent u zeker dat u dokter {{ vm.teVerwijderenDoctor.FirstName }} {{
+                    vm.teVerwijderenDoctor.LastName }} wilt
+                    verwijderen?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Annuleer</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"
+                        ng-click="vm.deleteDoctor()">Verwijder
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>

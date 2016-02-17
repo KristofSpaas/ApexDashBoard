@@ -1,0 +1,65 @@
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#/home">Apex Web Dashboard</a>
+    </div>
+    <!-- /.navbar-header -->
+    <ul class="nav navbar-top-links navbar-right">
+        <!-- /.dropdown -->
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="">
+                <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-messages">
+                <li ng-hide="vm.isAdmin">
+                    <a ng-href="#/profiel">
+                        <i class="fa fa-user fa-fw"></i> Profiel
+                    </a>
+                </li>
+                <li ng-show="vm.isAdmin">
+                    <a ng-href="#/adminProfiel">
+                        <i class="fa fa-user fa-fw"></i> Profiel
+                    </a>
+                </li>
+                <li ng-hide="vm.isAdmin" class="divider"></li>
+                <li>
+                    <a href="#" ng-click="vm.logOut()">
+                        <i class="fa fa-sign-out fa-fw"></i> Uitloggen
+                    </a>
+                </li>
+            </ul>
+            <!-- /.dropdown-user -->
+        </li>
+        <!-- /.dropdown -->
+    </ul>
+    <!-- /.navbar-top-links -->
+    <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav navbar-collapse collapse">
+            <ul class="nav" id="side-menu">
+                <li ng-hide="vm.isAdmin">
+                    <a href="#/home"><i class="fa fa-home fa-fw"></i> Home</a>
+                </li>
+                <li ng-hide="vm.isAdmin">
+                    <a href="#/patienten"><i class="fa fa-list fa-fw"></i> Patiënten</a>
+                </li>
+                <li ng-hide="vm.isAdmin">
+                    <a href="#/berichten"><i class="fa fa-envelope fa-fw"></i> Berichten</a>
+                </li>
+                <li ng-hide="vm.isAdmin">
+                    <a href="#/adviezen"><i class="fa fa-thumbs-up fa-fw"></i> Adviezen</a>
+                </li>
+                <li ng-show="vm.isAdmin">
+                    <a href="#/dokters"><i class="fa fa-list fa-fw"></i> Dokters</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.sidebar-collapse -->
+    </div>
+    <!-- /.navbar-static-side -->
+</nav>

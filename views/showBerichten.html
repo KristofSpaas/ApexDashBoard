@@ -1,0 +1,54 @@
+<div id="myNavbar" ng-include="'layout/navbar.html'"></div>
+
+<div id="page-wrapper">
+    <br/>
+    <br/>
+
+    <!--<div class="chat-panellll"></div>-->
+    <div class="panel panel-primary">
+        <div class="panel-heading clearfix">
+            <h4 class="panel-title pull-left" style="padding-top: 7.5px;">{{ vm.Patient.User.UserName
+                }}</h4>
+
+            <div class="btn-group pull-right">
+                <a href="#/berichten" class="btn btn-default btn-sm">Terug</a>
+            </div>
+        </div>
+
+        <div class="panel-body mychatpanel" scroll-glue>
+            <div ng-repeat="message in vm.Messages" class="clearfix">
+                <div class="panel panel-default mychatbericht"
+                     ng-class="{'pull-right': message.FromDoctor, 'berichtFromDoctor': message.FromDoctor}">
+                    <div class="panel-body"
+                         ng-class="{'myText-fromD': message.FromDoctor, 'myText-fromP': !message.FromDoctor}">
+                        {{ message.MessageContent }}
+                        <br/>
+                        <br/>
+
+                        <p class=""
+                           ng-class="{'text-left myDateP-black': message.FromDoctor, 'text-right myDateP-white': !message.FromDoctor}">
+                            {{
+                            message.DateMillis }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer clearfix" id="gewoonFooter">
+            <form role="form" name="sendMessageForm" ng-submit="vm.sendMessage(sendMessageForm.$valid)"
+                  novalidate>
+                <div class="col-sm-10">
+                    <input type="text" placeholder="Type hier je bericht..." class="form-control"
+                           ng-model="vm.messageToSend" required
+                           autofocus>
+                </div>
+                <div class="pull-right">
+                    <input type="submit" class="btn btn-success"
+                           ng-disabled="sendMessageForm.$invalid || vm.verstuurDisabled"
+                           value="Verstuur"/>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</div>

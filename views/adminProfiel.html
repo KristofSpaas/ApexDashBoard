@@ -1,0 +1,46 @@
+<div id="myNavbar" ng-include="'layout/navbar.html'"></div>
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Verander email voor Admin account
+                <a type="button" class="btn btn-lg btn-primary pull-right" href="#/dokters">Terug</a>
+            </h1>
+        </div>
+
+        <div class="col-lg-6 col-md-8 col-sm-12">
+            <div class="panel panel-primary">
+                <form role="form" name="editAdminForm" ng-submit="vm.editAdminEmail(editAdminForm.$valid)"
+                      novalidate>
+
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required
+                                   placeholder="{{vm.adminEmail}}"
+                                   ng-model="vm.newAdminEmail" autofocus="true">
+                        </div>
+
+                        <div class="alert alert-danger" role="alert" ng-show="vm.showAlert">
+                            <strong>Oeps!</strong> Dit email adres is al ingebruik.
+                        </div>
+
+                        <div class="alert alert-success" role="alert" ng-show="vm.showSucces">
+                            Uw e-mailadres is gewijzigd.
+                        </div>
+
+                    </div>
+                    <div class="panel-footer clearfix">
+                        <div class="pull-right btn-group">
+                            <a ng-href="#/dokters"
+                               class="btn btn-lg btn-warning">Annuleren</a>
+                            <button type="submit" class="btn btn-lg btn-success" ng-disabled="editAdminForm.$invalid">
+                                Opslaan
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

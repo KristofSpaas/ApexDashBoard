@@ -1,0 +1,35 @@
+<div id="myNavbar" ng-include="'layout/navbar.html'"></div>
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Adviezen</h1>
+        </div>
+    </div>
+    <div class="pPanel" ng-repeat="patient in vm.Patienten">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-4 pName">
+                        <a style="color: white; font-size: x-large" ng-href="#/adviezen/{{ patient.PatientId }}">
+                            {{ patient.User.UserName }}
+                        </a>
+                    </div>
+                    <div class="col-xs-8 text-right">
+                        <div class="btn-group">
+                            <a class="btn btn-lg btn-default"
+                               ng-href="#/adviezen/{{ patient.PatientId }}">
+                                <i class="fa fa-search-plus"></i>
+                            </a>
+                            <a class="btn btn-lg btn-success"
+                               ng-href="#/addAdvies/{{ patient.PatientId }}">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+</div>

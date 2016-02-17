@@ -1,0 +1,209 @@
+<html>
+<head>
+    <!-- Morris Charts JavaScript -->
+    <script src="../bower_components/raphael/raphael-min.js"></script>
+    <script src="../bower_components/morrisjs/morris.min.js"></script>
+    <script src="../js/morris-data.js"></script>
+</head>
+<body>
+<div id="myNavbar" ng-include="'layout/navbar.html'"></div>
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                {{ vm.Patient.User.UserName }}
+                <div class="btn-group pull-right">
+                    <a type="button" class="btn btn-lg btn-primary" href="#/patienten">Terug</a>
+                </div>
+            </h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i> Hartslag
+                    <div class="pull-right">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                Acties
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li><a class="btn"
+                                       ng-click="vm.printIt('printAreaHeartRate')">Afdrukken</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+
+                    <md-datepicker ng-model="vm.dateHeartRate" md-placeholder="Enter date"
+                                   ng-change="vm.dateHeartRateChanged()"></md-datepicker>
+                    <div id="printAreaHeartRate">
+                        <div ng-show="false">
+                            <h1>Hartslag {{ vm.Patient.User.UserName }}</h1>
+                            <br/>
+
+                            <h1>{{ vm.dateStringHeartRate }}</h1>
+                        </div>
+
+                        <div style="margin-top: 10px" ng-show="vm.noHeartRateData">
+                            Geen data beschikbaar
+                        </div>
+
+                        <div
+                                area-chart
+                                area-data='vm.jsonStrHeartRates'
+                                area-xkey='a'
+                                area-ykeys='["y"]'
+                                area-labels='["Hartslag"]'
+                                line-colors='["#c7254e"]'>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i> Temperatuur
+                    <div class="pull-right">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                Acties
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li><a class="btn" ng-click="vm.printIt('printAreaTemperature')">Afdrukken</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <md-datepicker ng-model="vm.dateTemperature" md-placeholder="Enter date"
+                                   ng-change="vm.dateTemperatureChanged()"></md-datepicker>
+
+                    <div id="printAreaTemperature">
+                        <div ng-show="false">
+                            <h1>Temperatuur {{ vm.Patient.User.UserName }}</h1>
+                            <br/>
+
+                            <h1>{{ vm.dateStringTemperature }}</h1>
+                        </div>
+
+                        <div style="margin-top: 10px" ng-show="vm.noTemperatureData">
+                            Geen data beschikbaar
+                        </div>
+
+                        <div
+                                area-chart
+                                area-data='vm.jsonStrTemperatures'
+                                area-xkey='a'
+                                area-ykeys='["y"]'
+                                area-labels='["Temperatuur"]'
+                                line-colors='["#31C0BE"]'>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i> Stappen
+                    <div class="pull-right">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                Acties
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li><a class="btn" ng-click="vm.printIt('printAreaSteps')">Afdrukken</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+
+                    <md-datepicker ng-model="vm.dateSteps" md-placeholder="Enter date"
+                                   ng-change="vm.dateStepsChanged()"></md-datepicker>
+
+                    <div id="printAreaSteps">
+                        <div ng-show="false">
+                            <h1>Stappen {{ vm.Patient.User.UserName }}</h1>
+                        </div>
+
+                        <div style="margin-top: 10px" ng-show="vm.noStepsData">
+                            Geen data beschikbaar
+                        </div>
+
+                        <div
+                                bar-chart
+                                bar-data='vm.jsonStrSteps'
+                                bar-x='a'
+                                bar-y='["y"]'
+                                bar-labels='["Stappen"]'
+                                bar-colors='["#c7254e"]'>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i> Gemoedstoestand
+                    <div class="pull-right">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                Acties
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li><a class="btn" ng-click="vm.printIt('printAreaMood')">Afdrukken</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+
+                    <md-datepicker ng-model="vm.dateMoodRatings" md-placeholder="Enter date"
+                                   ng-change="vm.dateMoodRatingsChanged()"></md-datepicker>
+
+                    <div id="printAreaMood">
+                        <div ng-show="false">
+                            <h1>Mood {{ vm.Patient.User.UserName }}</h1>
+                        </div>
+
+                        <div style="margin-top: 10px" ng-show="vm.noMoodData">
+                            Geen data beschikbaar
+                        </div>
+
+                        <div
+                                bar-chart
+                                bar-data='vm.jsonStrRatings'
+                                bar-x='a'
+                                bar-y='["y"]'
+                                bar-labels='["Gemoedstoestand"]'
+                                bar-colors='["#31C0BE"]'>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

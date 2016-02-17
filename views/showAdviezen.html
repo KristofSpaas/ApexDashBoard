@@ -1,0 +1,73 @@
+<div id="myNavbar" ng-include="'layout/navbar.html'"></div>
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Adviezen {{ vm.Patient.User.UserName }}
+                <div class="btn-group" id="adviesBtns">
+                    <a ng-href="#/addAdvies/{{vm.Patient.PatientId}}" type="button"
+                       class="btn btn-lg btn-success">
+                        <i class="fa fa-plus"></i>
+                    </a>
+                    <a ng-href="#/adviezen" type="button" class="btn btn-lg btn-primary">
+                        Terug
+                    </a>
+                </div>
+            </h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="clearfix col-lg-6 col-md-6 col-sm-12" ng-repeat="advice in vm.Advices">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-9 pName">
+                                <h4>{{ advice.AdviceTitle }}</h4>
+                            </div>
+                            <div class="col-xs-3 text-right">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-md btn-danger"
+                                            ng-click="vm.setTeVerwijderenAdvies(advice, $index)"
+                                            data-toggle="modal" data-target="#myModal">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-body ">
+                        <p>{{ advice.AdviceContent }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header myColor">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Advies verwijderen</h4>
+            </div>
+            <div class="modal-body">
+                <p>Bent u zeker dat u dit advies wilt verwijderen?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Annuleer</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"
+                        ng-click="vm.deleteAdvice()">Verwijder
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>

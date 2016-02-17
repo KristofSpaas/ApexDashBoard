@@ -1,0 +1,49 @@
+<div id="myNavbar" ng-include="'layout/navbar.html'"></div>
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Berichten</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="col-lg-4" ng-repeat="patient in vm.Patienten">
+                <a class="customWellLink" ng-href="#/berichten/{{ patient.PatientId }}">
+                    <div class="box">
+                        <div class="panel no-margin"
+                             ng-class="{'panel-green': patient.hasNewMessage, 'panel-primary': !patient.hasNewMessage}">
+
+                            <div class="panel-body">
+                                <div class="">
+                                    <div class="row">
+                                        <div class="col-xs-10">
+                                            <h4>{{ patient.User.UserName }}</h4>
+                                        </div>
+                                        <div class="col-xs-2 text-right" ng-show="patient.hasNewMessage">
+                                            <h4>{{ patient.newMessageCount }}</h4>
+                                        </div>
+                                    </div>
+
+
+                                    <p style="overflow: hidden; height: 70px">{{ patient.LastMessage.MessageContent }}</p>
+
+
+                                </div>
+                            </div>
+                            <div class="panel-footer" id="gewoonFooter">
+                                <span class="pull-left"></span>
+                                <span class="pull-right">{{ patient.LastMessage.DateMillis }}</span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="overbox">
+                            <span class="title overtext">Open</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
