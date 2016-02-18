@@ -136,7 +136,7 @@
         };
 
         vm.dateTemperatureChanged = function () {
-            var date = new Date(vm.dateHeartRate);
+            var date = new Date(vm.dateTemperature);
             vm.getTemperatures(+date);
             vm.dateStringTemperature = date.getUTCDate() + 1 + '/' + date.getMonth() + 1 + '/' + date.getFullYear();
         };

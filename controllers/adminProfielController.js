@@ -47,5 +47,4 @@
 
         vm.getAdminEmail();
     }
-})
-();
+})();
