@@ -5,9 +5,9 @@
         .controller('loginController', loginController);
 
     // 2. Factory injecteren
-    loginController.$inject = ['apexFactory', '$cookieStore', '$cookies', '$location', '$window'];
+    loginController.$inject = ['apexFactory', '$cookieStore', '$cookies', '$location'];
 
-    function loginController(apexFactory, $cookieStore, $cookies, $location, $window) {
+    function loginController(apexFactory, $cookieStore, $cookies, $location) {
         var vm = this;
 
         vm.showAlert = false;

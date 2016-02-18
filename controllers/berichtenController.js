@@ -5,8 +5,8 @@
         .controller('berichtenController', berichtenController);
 
     // 2. Factory injecteren
-    berichtenController.$inject = ['apexFactory', '$location', '$cookies'];
-    function berichtenController(apexFactory, $location, $cookies) {
+    berichtenController.$inject = ['apexFactory'];
+    function berichtenController(apexFactory) {
         var vm = this;
 
         var months = ["Jan", "Feb", "Maart", "April", "Mei", "Juni", "Juli", "Aug", "Sep", "Okt", "Nov", "Dec"];

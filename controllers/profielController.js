@@ -31,7 +31,7 @@
         };
 
         vm.logOut = function () {
-            apexFactory.logOut()
+            apexFactory.logOut();
         };
 
 

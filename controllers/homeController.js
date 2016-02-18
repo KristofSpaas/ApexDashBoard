@@ -5,8 +5,8 @@
         .controller('homeController', homeController);
 
     // 2. Factory injecteren
-    homeController.$inject = ['apexFactory', '$cookies', '$location'];
-    function homeController(apexFactory, $cookies, $location) {
+    homeController.$inject = ['apexFactory'];
+    function homeController(apexFactory) {
         var vm = this;
 
         vm.hasNewMessages = false;

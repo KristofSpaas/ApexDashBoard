@@ -5,8 +5,8 @@
         .controller('patientenController', patientenController);
 
     // 2. Factory injecteren
-    patientenController.$inject = ['apexFactory', '$location', '$cookies'];
-    function patientenController(apexFactory, $location, $cookies) {
+    patientenController.$inject = ['apexFactory', '$location'];
+    function patientenController(apexFactory, $location) {
         var vm = this;
 
         vm.getPatienten = function () {

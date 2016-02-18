@@ -25,15 +25,14 @@
                         var string = JSON.stringify(err);
 
                         if (string.indexOf("Confirm") > -1) {
-                            vm.alert = "Het wachtwoord en het bevestig wachtwoord komen niet overeen."
+                            vm.alert = "Het wachtwoord en het bevestig wachtwoord komen niet overeen.";
                         } else if (string.indexOf("Password") > -1) {
                             vm.alert = "Het wachtwoord moet minstens 6 karakters lang zijn en een hoofdletter en een cijfer bevatten.";
                         } else if (string.indexOf("email") > -1) {
                             vm.alert = "Er is geen gebruiker met dit e-mailadres.";
                         } else {
-                            vm.alert = "Token of wachtwoord is niet juist. Het wachtwoord moet minstens 6 karakters lang zijn en een hoofdletter en een cijfer bevatten."
+                            vm.alert = "Token of wachtwoord is niet juist. Het wachtwoord moet minstens 6 karakters lang zijn en een hoofdletter en een cijfer bevatten.";
                         }
-                        
                         vm.showAlert = true;
                     });
             }

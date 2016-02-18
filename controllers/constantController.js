@@ -5,8 +5,8 @@
         .controller('constantController', constantController);
 
     // 2. Globals injecteren
-    constantController.$inject = ['GLOBALS', '$location', '$cookies', '$window'];
-    function constantController(GLOBALS, $location, $cookies, $window) {
+    constantController.$inject = ['GLOBALS'];
+    function constantController(GLOBALS) {
         var vm = this;
 
         // Gegevens uit de constante ophalen en toekennen aan variabelen

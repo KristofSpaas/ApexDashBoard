@@ -5,8 +5,8 @@
         .controller('adminProfielController', adminProfielController);
 
     // 2. Factory injecteren
-    adminProfielController.$inject = ['apexFactory', '$location'];
-    function adminProfielController(apexFactory, $location) {
+    adminProfielController.$inject = ['apexFactory'];
+    function adminProfielController(apexFactory) {
         var vm = this;
 
         vm.showAlert = false;
@@ -38,7 +38,7 @@
         };
 
         vm.logOut = function () {
-            apexFactory.logOut()
+            apexFactory.logOut();
         };
 
         apexFactory.checkIfLoggedIn(true);
