@@ -33,9 +33,7 @@
                         } else {
                             vm.alert = "Token of wachtwoord is niet juist. Het wachtwoord moet minstens 6 karakters lang zijn en een hoofdletter en een cijfer bevatten."
                         }
-
-                        alert(string);
-
+                        
                         vm.showAlert = true;
                     });
             }
