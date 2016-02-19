@@ -12,6 +12,7 @@
         vm.showAlert = false;
         vm.showSucces = false;
 
+        // Edits the email of the admin account
         vm.editAdminEmail = function (isValid) {
             // check to make sure the form is completely valid
             if (isValid) {
@@ -27,6 +28,7 @@
             }
         };
 
+        // Gets the email of the admin account
         vm.getAdminEmail = function () {
             apexFactory.getAdminEmail()
                 .success(function (returnJson) {
@@ -37,10 +39,12 @@
                 });
         };
 
+        // Method for logging out
         vm.logOut = function () {
             apexFactory.logOut();
         };
 
+        // Check if user is logged in, if not redirect to login page
         apexFactory.checkIfLoggedIn(true);
 
         vm.isAdmin = apexFactory.checkIfAdmin();

@@ -4,7 +4,7 @@
     angular.module('myApp')
         .controller('setPasswordController', setPasswordController);
 
-    // 2. Factory injecteren
+    // 2. Inject dependencies
     setPasswordController.$inject = ['apexFactory', '$location'];
 
     function setPasswordController(apexFactory, $location) {
@@ -12,6 +12,7 @@
 
         vm.showAlert = false;
 
+        // Changes the password of a user
         vm.setPassword = function (isValid) {
             if (isValid) {
                 var data = 'email=' + vm.email + '&token=' + vm.token + '&newpassword=' + vm.newPassword + '&confirmpassword='

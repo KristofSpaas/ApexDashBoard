@@ -12,6 +12,7 @@
         vm.hasNewMessages = false;
         vm.countNewMessages = 0;
 
+        // Gets patients by DoctorId
         vm.getPatienten = function () {
             apexFactory.getPatientenByDoctorId()
                 .success(function (returnJson) {
@@ -26,6 +27,7 @@
                 });
         };
 
+        // Gets all new messages of the doctor
         vm.getNewMessages = function (id) {
             apexFactory.getNewMessages(id)
                 .success(function (returnJson) {
@@ -39,8 +41,9 @@
                 });
         };
 
+        // Gets a patient by PatientId
         vm.getPatient = function () {
-            apexFactory.getPatient(2)
+            apexFactory.getPatient(22)
                 .success(function (returnJson) {
                     vm.Patient = returnJson;
 
@@ -56,6 +59,7 @@
                 });
         };
 
+        // Gets heart rates of patient
         vm.getHeartRates = function (id, dateMillis) {
             apexFactory.getHeartRates(id, dateMillis)
                 .success(function (returnJson) {
@@ -80,10 +84,12 @@
                 });
         };
 
+        // Method for logging out
         vm.logOut = function () {
             apexFactory.logOut();
         };
 
+        // Check if user is logged in, if not redirect to login page
         apexFactory.checkIfLoggedIn(false);
 
         vm.isAdmin = apexFactory.checkIfAdmin();

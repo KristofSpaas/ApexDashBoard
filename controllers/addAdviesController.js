@@ -4,7 +4,7 @@
     angular.module('myApp')
         .controller('addAdviesController', addAdviesController);
 
-    // 2. Factory injecteren
+    // 2. Inject dependencies
     addAdviesController.$inject = ['apexFactory', '$location', '$cookies', '$routeParams'];
     function addAdviesController(apexFactory, $location, $cookies, $routeParams) {
         var vm = this,
@@ -12,6 +12,7 @@
         vm.showAlert = false;
         vm.err = "";
 
+        // Get patient by ID
         vm.getPatient = function () {
             apexFactory.getPatient(id)
                 .success(function (returnJson) {
@@ -23,6 +24,7 @@
                 });
         };
 
+        // Adds an advice
         vm.addAdvice = function (isValid) {
             if (isValid) {
                 var advies = 'advicetitle=' + vm.advice.title + '&advicecontent=' + vm.advice.content +
@@ -38,10 +40,12 @@
             }
         };
 
+        // Method for logging out
         vm.logOut = function () {
             apexFactory.logOut();
         };
 
+        // Check if user is logged in, if not redirect to login page
         apexFactory.checkIfLoggedIn(false);
 
         vm.isAdmin = apexFactory.checkIfAdmin();

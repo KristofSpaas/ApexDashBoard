@@ -4,7 +4,7 @@
     angular.module('myApp')
         .controller('showBerichtenController', showBerichtenController);
 
-    // 2. Factory injecteren
+    // 2. Inject dependencies
     showBerichtenController.$inject = ['apexFactory', '$location', '$cookies', '$routeParams'];
     function showBerichtenController(apexFactory, $location, $cookies, $routeParams) {
         var vm = this,
@@ -14,6 +14,7 @@
 
         vm.verstuurDisabled = false;
 
+        // Gets a patient by PatientId
         vm.getPatient = function () {
             apexFactory.getPatient(id)
                 .success(function (returnJson) {
@@ -23,6 +24,7 @@
                 });
         };
 
+        // Gets messages of a patient
         vm.getMessages = function () {
             apexFactory.getMessages(id)
                 .success(function (returnJson) {
@@ -53,6 +55,7 @@
                 });
         };
 
+        // Sends a message to a patient
         vm.sendMessage = function (isValid) {
             if (isValid) {
                 vm.verstuurDisabled = true;
@@ -91,6 +94,7 @@
             }
         };
 
+        // Sets the messages to seen
         vm.setMessagesSeen = function () {
             apexFactory.setMessagesSeen(id)
                 .success(function () {
@@ -99,10 +103,12 @@
                 });
         };
 
+        // Method for logging out
         vm.logOut = function () {
             apexFactory.logOut();
         };
 
+        // Check if user is logged in, if not redirect to login page
         apexFactory.checkIfLoggedIn(false);
 
         vm.isAdmin = apexFactory.checkIfAdmin();

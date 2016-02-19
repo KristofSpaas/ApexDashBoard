@@ -4,11 +4,12 @@
     angular.module('myApp')
         .controller('patientenController', patientenController);
 
-    // 2. Factory injecteren
+    // 2. Inject dependencies
     patientenController.$inject = ['apexFactory', '$location'];
     function patientenController(apexFactory, $location) {
         var vm = this;
 
+        // Gets patients by DoctorId
         vm.getPatienten = function () {
             apexFactory.getPatientenByDoctorId()
                 .success(function (returnJson) {
@@ -19,10 +20,12 @@
                 });
         };
 
+        // Sets the patient that will be deleted
         vm.setTeVerwijderenPatient = function (patient) {
             vm.teVerwijderenPatient = patient;
         };
 
+        // Deletes a patient
         vm.deletePatient = function () {
             apexFactory.deletePatient(vm.teVerwijderenPatient.PatientId)
                 .success(function () {
@@ -32,14 +35,17 @@
                 });
         };
 
+        // Method to go to the addPatientView
         vm.goToAddPatientView = function () {
             $location.url('/addPatient');
         };
 
+        // Method for logging out
         vm.logOut = function () {
             apexFactory.logOut();
         };
 
+        // Check if user is logged in, if not redirect to login page
         apexFactory.checkIfLoggedIn(false);
 
         vm.isAdmin = apexFactory.checkIfAdmin();

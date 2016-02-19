@@ -4,7 +4,7 @@
     angular.module('myApp')
         .controller('loginController', loginController);
 
-    // 2. Factory injecteren
+    // 2. Inject dependencies
     loginController.$inject = ['apexFactory', '$cookieStore', '$cookies', '$location'];
 
     function loginController(apexFactory, $cookieStore, $cookies, $location) {
@@ -12,12 +12,14 @@
 
         vm.showAlert = false;
 
+        // Check if user is logged in, if logged in redirect to homeView
         vm.checkIfLoggedIn = function () {
             if ($cookies.get('access_token') !== undefined) {
                 $location.url('/home');
             }
         };
 
+        // Logs the user in and saves its values as cookies
         vm.login = function (isValid) {
             if (isValid) {
                 var data = 'grant_type=password&username=' + vm.email + '&password=' + vm.password;

@@ -9,6 +9,7 @@
     function adviezenController(apexFactory) {
         var vm = this;
 
+        // Gets Patients by DoctorId
         vm.getPatienten = function () {
             apexFactory.getPatientenByDoctorId()
                 .success(function (returnJson) {
@@ -18,10 +19,12 @@
                 });
         };
 
+        // Method for logging out
         vm.logOut = function () {
             apexFactory.logOut();
         };
 
+        // Check if user is logged in, if not redirect to login page
         apexFactory.checkIfLoggedIn(false);
 
         vm.getPatienten();

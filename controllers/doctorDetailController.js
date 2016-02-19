@@ -10,6 +10,7 @@
         var vm = this,
             id = $routeParams.id;
 
+        // Gets doctor by DoctorId
         vm.getDoctor = function () {
             apexFactory.getDoctor(id)
                 .success(function (returnJson) {
@@ -19,10 +20,12 @@
                 });
         };
 
+        // Sets the doctor that will be deleted
         vm.setTeVerwijderenDoctor = function (index) {
             vm.index = index;
         };
 
+        // Deletes a doctor
         vm.deleteDoctor = function () {
             apexFactory.deleteDoctor(vm.Doctor.DoctorId)
                 .success(function () {
@@ -34,10 +37,12 @@
                 });
         };
 
+        // Method for logging out
         vm.logOut = function () {
             apexFactory.logOut();
         };
 
+        // Check if user is logged in, if not redirect to login page
         apexFactory.checkIfLoggedIn(true);
 
         vm.isAdmin = apexFactory.checkIfAdmin();

@@ -9,6 +9,7 @@
     function apexFactory($http, GLOBALS, $cookies, $location, $window) {
         var factory = {};
 
+        // Logs the user in
         factory.login = function (data) {
             return $http({
                 method: 'POST',
@@ -20,6 +21,7 @@
             });
         };
 
+        // Gets patients of a doctor
         factory.getPatientenByDoctorId = function () {
             return $http({
                 method: 'GET',
@@ -31,6 +33,7 @@
             });
         };
 
+        // Gets all doctors
         factory.getDoctors = function () {
             return $http({
                 method: 'GET',
@@ -42,6 +45,7 @@
             });
         };
 
+        // Gets a patient by PatientId
         factory.getPatient = function (id) {
             return $http({
                 method: 'GET',
@@ -53,6 +57,7 @@
             });
         };
 
+        // Gets a doctor by DoctorId
         factory.getDoctor = function (id) {
             return $http({
                 method: 'GET',
@@ -64,6 +69,7 @@
             });
         };
 
+        // Gets heartRates of a patient for a certain day
         factory.getHeartRates = function (id, dateMillis) {
             return $http({
                 method: 'GET',
@@ -75,6 +81,7 @@
             });
         };
 
+        // Gets temperatures of a patient for a certain day
         factory.getTemperatures = function (id, dateMillis) {
             return $http({
                 method: 'GET',
@@ -86,6 +93,7 @@
             });
         };
 
+        // Gets steps of a patient for a certain month
         factory.getSteps = function (id, dateMillis) {
             return $http({
                 method: 'GET',
@@ -97,6 +105,7 @@
             });
         };
 
+        // Gets moodRatings of a patient for a certain month
         factory.getMoodRatings = function (id, dateMillis) {
             return $http({
                 method: 'GET',
@@ -108,6 +117,7 @@
             });
         };
 
+        // Adds a patient
         factory.addPatient = function (newPatient) {
             return $http({
                 method: 'POST',
@@ -120,6 +130,7 @@
             });
         };
 
+        // Adds a doctor
         factory.addDoctor = function (newDoctor) {
             return $http({
                 method: 'POST',
@@ -132,6 +143,7 @@
             });
         };
 
+        // Deletes a patient
         factory.deletePatient = function (id) {
             return $http({
                 method: 'DELETE',
@@ -143,6 +155,7 @@
             });
         };
 
+        // Deletes a doctor
         factory.deleteDoctor = function (id) {
             return $http({
                 method: 'DELETE',
@@ -154,6 +167,7 @@
             });
         };
 
+        // Edits an existing doctor
         factory.editDoctor = function (id, newDoctor) {
             return $http({
                 method: 'PUT',
@@ -166,6 +180,7 @@
             });
         };
 
+        // Sends a mail containing a password reset request
         factory.forgotPassword = function (email) {
             return $http({
                 method: 'POST',
@@ -177,6 +192,7 @@
             });
         };
 
+        // Changes the password of a user
         factory.setPassword = function (data) {
             return $http({
                 method: 'POST',
@@ -188,6 +204,7 @@
             });
         };
 
+        // Gets all advices of a patient
         factory.getAdvices = function (id) {
             return $http({
                 method: 'GET',
@@ -199,6 +216,7 @@
             });
         };
 
+        // Adds an advice
         factory.addAdvice = function (advies) {
             return $http({
                 method: 'POST',
@@ -211,6 +229,7 @@
             });
         };
 
+        // Deletes an advice
         factory.deleteAdvice = function (id) {
             return $http({
                 method: 'DELETE',
@@ -222,6 +241,7 @@
             });
         };
 
+        // Gets all messages of a patient
         factory.getMessages = function (id) {
             return $http({
                 method: 'GET',
@@ -233,6 +253,7 @@
             });
         };
 
+        // adds a message
         factory.addMessage = function (message) {
             return $http({
                 method: 'POST',
@@ -245,6 +266,7 @@
             });
         };
 
+        // Gets all new messages for a doctor
         factory.getNewMessages = function (id) {
             return $http({
                 method: 'GET',
@@ -256,6 +278,7 @@
             });
         };
 
+        // Sets messages to seen by Doctor
         factory.setMessagesSeen = function (id) {
             return $http({
                 method: 'POST',
@@ -267,12 +290,14 @@
             });
         };
 
+        // Checks if the logged in user is an Admin
         factory.checkIfAdmin = function () {
             if ($cookies.get('role') === 'Admin') {
                 return true;
             }
         };
 
+        // Logs the user out
         factory.logOut = function () {
             $cookies.remove("access_token");
             $cookies.remove("userName");
@@ -282,6 +307,7 @@
             $window.location.reload();
         };
 
+        // Checks if user is logged in, if not redirect to login page
         factory.checkIfLoggedIn = function (isAdminPage) {
             if ($cookies.get('access_token') === undefined) {
                 $location.url('/login');
@@ -292,6 +318,7 @@
             }
         };
 
+        // Gets the email of the admin account
         factory.getAdminEmail = function () {
             return $http({
                 method: 'GET',
@@ -303,6 +330,7 @@
             });
         };
 
+        // Edits the email of the admin account
         factory.editAdminEmail = function (data) {
             return $http({
                 method: 'POST',

@@ -4,7 +4,7 @@
     angular.module('myApp')
         .controller('patientDetailController', patientDetailController);
 
-    // 2. Factory injecteren
+    // 2. Inject dependencies
     patientDetailController.$inject = ['apexFactory', '$location', '$cookies', '$routeParams', '$window'];
     function patientDetailController(apexFactory, $location, $cookies, $routeParams, $window) {
         var vm = this,
@@ -12,6 +12,7 @@
 
         var months = ["Jan", "Feb", "Maart", "April", "Mei", "Juni", "Juli", "Aug", "Sep", "Okt", "Nov", "Dec"];
 
+        // Gets patient by PatientId
         vm.getPatient = function () {
             apexFactory.getPatient(id)
                 .success(function (returnJson) {
@@ -22,6 +23,7 @@
                 });
         };
 
+        // Gets heart rates of a patient
         vm.getHeartRates = function (dateMillis) {
             apexFactory.getHeartRates(id, dateMillis)
                 .success(function (returnJson) {
@@ -49,6 +51,7 @@
                 });
         };
 
+        // Gets temperatures of a patient
         vm.getTemperatures = function (dateMillis) {
             apexFactory.getTemperatures(id, dateMillis)
                 .success(function (returnJson) {
@@ -75,6 +78,7 @@
                 });
         };
 
+        // Gets steps of a patient
         vm.getSteps = function (dateMillis) {
             apexFactory.getSteps(id, dateMillis)
                 .success(function (returnJson) {
@@ -102,6 +106,7 @@
                 });
         };
 
+        // Gets moodRatings of a patient
         vm.getMoodRatings = function (dateMillis) {
             apexFactory.getMoodRatings(id, dateMillis)
                 .success(function (returnJson) {
@@ -129,26 +134,31 @@
                 });
         };
 
+        // This method gets called when a different date is selected for the heart rates
         vm.dateHeartRateChanged = function () {
             var date = new Date(vm.dateHeartRate);
             vm.getHeartRates(+date);
             vm.dateStringHeartRate = date.getUTCDate() + 1 + '/' + date.getMonth() + 1 + '/' + date.getFullYear();
         };
 
+        // This method gets called when a different date is selected for the temperatures
         vm.dateTemperatureChanged = function () {
             var date = new Date(vm.dateTemperature);
             vm.getTemperatures(+date);
             vm.dateStringTemperature = date.getUTCDate() + 1 + '/' + date.getMonth() + 1 + '/' + date.getFullYear();
         };
 
+        // This method gets called when a different date is selected for the steps
         vm.dateStepsChanged = function () {
             vm.getSteps(+new Date(vm.dateSteps));
         };
 
+        // This method gets called when a different date is selected for the moodRatings
         vm.dateMoodRatingsChanged = function () {
             vm.getMoodRatings(+new Date(vm.dateMoodRatings));
         };
 
+        // Sets default dates for the patient values
         vm.setDefaultDates = function () {
             vm.dateHeartRate = new Date();
             vm.dateHeartRate.setHours(0);
@@ -179,6 +189,7 @@
             vm.dateMoodRatingsChanged();
         };
 
+        // Prints the selected values
         vm.printIt = function (id) {
             var table = document.getElementById(id).innerHTML;
             var myWindow = $window.open('', '', 'width=800, height=600');

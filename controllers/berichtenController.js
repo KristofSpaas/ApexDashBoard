@@ -11,6 +11,7 @@
 
         var months = ["Jan", "Feb", "Maart", "April", "Mei", "Juni", "Juli", "Aug", "Sep", "Okt", "Nov", "Dec"];
 
+        // Gets Patients by DoctorId
         vm.getPatienten = function () {
             apexFactory.getPatientenByDoctorId()
                 .success(function (returnJson) {
@@ -25,6 +26,7 @@
                 });
         };
 
+        // Gets messages of a patient
         vm.getMessages = function (id, i) {
             apexFactory.getMessages(id)
                 .success(function (returnJson) {
@@ -59,6 +61,7 @@
                 });
         };
 
+        // Gets the new messages of a patient
         vm.getNewMessages = function (id, i) {
             apexFactory.getNewMessages(id)
                 .success(function (returnJson) {
@@ -74,10 +77,12 @@
                 });
         };
 
+        // Method for logging out
         vm.logOut = function () {
             apexFactory.logOut();
         };
 
+        // Check if user is logged in, if not redirect to login page
         apexFactory.checkIfLoggedIn(false);
 
         vm.isAdmin = apexFactory.checkIfAdmin();
