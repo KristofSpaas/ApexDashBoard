@@ -5,6 +5,6 @@
         .constant('GLOBALS', {
             appName: 'Apex Web Dashboard',
             appVersion: '1.0.0',
-            backendUrl: 'http://apexbackend.azurewebsites.net/'
+            backendUrl: 'https://apexbackend.azurewebsites.net/'
         });
 })();
